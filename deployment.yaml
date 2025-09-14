@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trendsapp-deployment
+  labels:
+    app: trends-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: trends-app
+  template:
+    metadata:
+      labels:
+        app: trends-app
+    spec:
+      containers:
+        - name: trendsapp-container
+          image: zera18/trendsapp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
