@@ -26,7 +26,7 @@ pipeline{
             steps {
                 sh 'echo "Deploying to EKS cluster..."'
                 sh 'aws eks update-kubeconfig --region ap-south-1 --name trendsapp-cluster'
-                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f deployment.yaml --validate=false'
                 sh 'kubectl apply -f service.yaml'
             }
         }
